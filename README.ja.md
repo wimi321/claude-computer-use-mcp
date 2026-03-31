@@ -55,7 +55,7 @@ clawhub install computer-use-macos
 
 ## ローカル検証済み
 
-macOS 上で以下を実機確認しました。
+実機の macOS で以下を確認しました。
 
 - runtime bootstrap
 - 権限チェック
@@ -65,8 +65,14 @@ macOS 上で以下を実機確認しました。
 - ポインタ下アプリ検出
 - ウィンドウとディスプレイの対応付け
 - クリップボード読み書き
-- 入力経路の smoke test
+- MCP `type` ツール経由の GUI 入力 smoke test
 - MCP server 起動
+
+## 0.2.2 で修正したこと
+
+実機テスト中に重要な不具合を確認しました。中国語 IME / 入力ソースが有効な状態では、通常の ASCII テキストでもキーを 1 文字ずつ送る方式だと内容が壊れることがありました。
+
+`0.2.2` では、macOS 上でクリップボード書き込み権限がある場合、通常の複数字入力も優先的にクリップボード貼り付け経路へルーティングします。これにより、英字入力が IME 状態に引きずられて壊れるケースを避けられます。
 
 ## アーキテクチャ
 
@@ -184,6 +190,22 @@ macOS では引き続き以下が必要です。
 ### 対応プラットフォーム
 
 この実装は現在 `macOS only` です。Windows や Linux 向け backend はまだ含まれていません。
+
+## 検証マトリクス
+
+今回この Mac で完了した実テスト:
+
+- `npm run check`
+- `npm run build`
+- `runtime/mac_helper.py` の Python compile check
+- Accessibility / Screen Recording の権限確認
+- アクティブディスプレイの列挙
+- 実デスクトップのスクリーンショット取得
+- 実行中 / インストール済みアプリの列挙
+- 最前面アプリの検出
+- 新しい `CODEX_HOME` への skill インストール
+- インストール済み `project/` での `npm install && npm run build`
+- TextEdit を使った MCP `type` ツールの GUI 入力ラウンドトリップ検証
 
 ## 主要コマンド
 

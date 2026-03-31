@@ -1,6 +1,6 @@
 ---
 name: computer-use-macos
-version: 0.2.1
+version: 0.2.2
 description: Top-level macOS computer-use skill with a bundled standalone runtime that bootstraps itself without any local Claude installation, private native modules, or extracted app assets.
 tags:
   - skill
@@ -50,6 +50,11 @@ node dist/cli.js
 ```
 
 The first real run will automatically create `.runtime/venv` and install the public Python dependencies.
+
+## Validation notes
+
+- On real macOS hosts, prefer validating typing through the MCP `type` tool path, not only low-level helper calls.
+- Version `0.2.2` routes ordinary macOS text input through clipboard paste when available, avoiding IME/input-source corruption seen with per-key typing under Chinese input methods.
 
 ## Guardrails
 

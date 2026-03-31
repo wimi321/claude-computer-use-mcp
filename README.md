@@ -55,7 +55,7 @@ This repository now delivers exactly that on macOS.
 
 ## Current Status
 
-This repository has been validated locally on macOS with:
+This repository has been validated locally on a real macOS machine with:
 
 - runtime bootstrap
 - permission checks
@@ -65,8 +65,14 @@ This repository has been validated locally on macOS with:
 - app-under-point lookup
 - window-to-display resolution
 - clipboard read/write
-- safe input-path smoke tests
+- MCP `type` tool GUI typing smoke tests
 - MCP server startup
+
+## What Was Fixed In 0.2.2
+
+During real-device testing, we hit a macOS-specific bug: under a Chinese IME/input source, ordinary ASCII text could be corrupted when the tool typed one key at a time.
+
+Version `0.2.2` fixes that by preferring clipboard-routed typing on macOS for normal multi-character text when clipboard write is available. That keeps the standalone skill usable even when the current input source is not plain U.S. keyboard mode.
 
 ## Architecture
 
@@ -199,6 +205,22 @@ Covered capabilities:
 - window-to-display mapping
 - clipboard access
 - app launch
+
+## Validation Matrix
+
+Real tests completed on this Mac:
+
+- `npm run check`
+- `npm run build`
+- Python helper compile check for `runtime/mac_helper.py`
+- permission probe: Accessibility + Screen Recording both granted
+- display discovery on the active display
+- real screenshot capture from the desktop
+- running / installed app enumeration
+- frontmost-app detection
+- bundled skill install into a clean `CODEX_HOME`
+- bundled project `npm install && npm run build`
+- real GUI typing round-trip through the MCP `type` tool into TextEdit with exact clipboard verification
 
 ## Example Commands
 

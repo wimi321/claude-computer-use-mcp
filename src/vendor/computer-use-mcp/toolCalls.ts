@@ -2428,11 +2428,14 @@ async function handleType(
   );
   if (gate) return gate;
 
-  // §6 item 3 — clipboard-paste fast path for multi-line. Sub-gated AND
-  // requires clipboardWrite grant. The save/restore + read-back-verify
-  // lives in the EXECUTOR (task #5), not here. Here we just route.
+  // §6 item 3 — clipboard-paste fast path. On macOS we also prefer the
+  // clipboard path for ordinary text when clipboardWrite is granted, because
+  // IME/input-source state can corrupt keystroke-by-keystroke typing even for
+  // plain ASCII. The save/restore + read-back-verify lives in the EXECUTOR,
+  // not here. Here we just route.
   const viaClipboard =
-    text.includes("\n") &&
+    (text.includes("\n") ||
+      (adapter.executor.capabilities.platform === "darwin" && text.length > 1)) &&
     overrides.grantFlags.clipboardWrite &&
     subGates.clipboardPasteMultiline;
 

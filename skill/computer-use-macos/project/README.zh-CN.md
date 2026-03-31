@@ -55,7 +55,7 @@ clawhub install computer-use-macos
 
 ## 已完成的本地验证
 
-已经在 macOS 本机实际验证：
+已经在一台真实 macOS 机器上实际验证：
 
 - runtime 自举成功
 - 权限检测成功
@@ -65,8 +65,14 @@ clawhub install computer-use-macos
 - 鼠标位置对应应用识别成功
 - 窗口到显示器的归属解析成功
 - 剪贴板读写成功
-- 输入链路 smoke test 成功
+- 走 MCP `type` 工具链路的 GUI 输入 smoke test 成功
 - MCP server 成功启动
+
+## 0.2.2 修复了什么
+
+这次真机测试里抓到了一个关键问题：在中文输入法环境下，普通英文文本如果按“逐键输入”执行，内容会被输入法状态污染，连纯 ASCII 都可能打错。
+
+`0.2.2` 已修复这一点：在 macOS 上，只要具备剪贴板写权限，普通多字符文本会优先走剪贴板粘贴路径，而不是一键一键敲。这样 skill 安装后在真实中文工作环境里会稳定得多。
 
 ## 架构
 
@@ -199,6 +205,22 @@ macOS 仍然需要：
 - 窗口到显示器映射
 - 剪贴板访问
 - 应用启动
+
+## 验证矩阵
+
+这次在本机完成的真实测试包括：
+
+- `npm run check`
+- `npm run build`
+- `runtime/mac_helper.py` 的 Python 编译检查
+- 权限探测：Accessibility 与 Screen Recording 均已授权
+- 当前显示器枚举
+- 真实桌面截图采集
+- 运行中 / 已安装应用枚举
+- 前台应用识别
+- 将 skill 安装到全新 `CODEX_HOME`
+- 在已安装 skill 的 `project/` 内执行 `npm install && npm run build`
+- 通过 TextEdit 对 MCP `type` 工具做真实 GUI 输入回读校验，结果精确匹配
 
 ## 常用命令
 
