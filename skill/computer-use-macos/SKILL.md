@@ -1,11 +1,18 @@
 ---
 name: computer-use-macos
-description: Use when you need a fully standalone macOS computer-use MCP server and skill that bootstraps itself without any local Claude installation, private native modules, or extracted app assets.
+version: 0.2.0
+description: Top-level macOS computer-use skill with a bundled standalone runtime that bootstraps itself without any local Claude installation, private native modules, or extracted app assets.
+tags:
+  - skill
+  - macos
+  - computer-use
+  - automation
+  - mcp
 ---
 
-# Computer Use macOS
+# macOS Computer-Use Skill
 
-Use this skill when the task needs the standalone macOS computer-use MCP server bundled with this skill.
+Use this skill when the task needs a portable macOS computer-use skill bundled with its own standalone runtime and MCP server.
 
 ## What this skill does
 
@@ -13,6 +20,7 @@ Use this skill when the task needs the standalone macOS computer-use MCP server 
 - builds the standalone MCP server
 - lets the server auto-bootstrap its Python runtime on first launch
 - avoids any dependency on local Claude binaries, `.node` modules, or extracted app assets
+- stays explicitly macOS-only because the underlying desktop-control backend is macOS-specific
 
 ## Default bundled project path
 

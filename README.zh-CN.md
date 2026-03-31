@@ -1,7 +1,7 @@
 <div align="center">
   <img src="./assets/hero.svg" alt="claude-computer-use-mcp hero" width="100%" />
-  <h1>claude-computer-use-mcp</h1>
-  <p><strong>一个完全脱离本机 Claude 安装、可独立运行的 macOS Computer Use MCP Server。</strong></p>
+  <h1>macOS Computer-Use Skill</h1>
+  <p><strong>一个面向 macOS 的顶级可移植 skill，内置独立 runtime 与 MCP server。</strong></p>
   <p>
     <a href="https://github.com/wimi321/claude-computer-use-mcp">GitHub</a>
     ·
@@ -10,6 +10,16 @@
     <a href="./README.ja.md">日本語</a>
   </p>
 </div>
+
+## 项目定位
+
+这个仓库本质上同时是：
+
+- 一个顶级 `skill`
+- 一套独立的 macOS runtime
+- 一个给 agent 生态使用的 computer-use MCP server
+
+它不只是给 Codex 用，skill 这种交付方式本身就是为了跨 agent 生态可移植。
 
 ## 这个项目解决什么问题
 
@@ -24,10 +34,11 @@
 
 ## 你现在拿到的能力
 
+- 顶级 macOS computer-use skill
 - 独立 MCP server：截图、鼠标、键盘、应用启动、窗口/显示器信息、剪贴板
 - 只使用公开依赖：`Node.js + Python + pyautogui + mss + Pillow + pyobjc`
 - 首次运行自动自举：自动创建 `.runtime/venv` 并安装 Python 依赖
-- 顶级 Codex skill，可把完整项目一起安装到 `~/.codex/skills/computer-use-macos/project`
+- 安装 skill 时会把完整项目一起复制到 `~/.codex/skills/computer-use-macos/project`
 - 保留并复用提取出来的 TypeScript computer-use 工具链，但底层执行器已换成真正独立的 runtime
 
 ## 已完成的本地验证
@@ -108,7 +119,7 @@ node dist/cli.js
 
 参考 [`examples/mcp-config.json`](./examples/mcp-config.json)。
 
-## 顶级 Skill
+## Skill 安装
 
 仓库自带顶级 skill：[`skill/computer-use-macos`](./skill/computer-use-macos)
 
@@ -130,7 +141,7 @@ bash skill/computer-use-macos/scripts/install.sh
 ~/.codex/skills/computer-use-macos/project
 ```
 
-也就是说，即使原始 clone 被删掉，skill 仍然有自己的可运行项目副本。
+也就是说，即使原始 clone 被删掉，已安装的 skill 仍然有自己的可运行项目副本。
 
 ## 运行说明
 
@@ -152,9 +163,11 @@ macOS 仍然需要：
 - 截图本身不是 compositor 级过滤
 - 但操作权限、allowlist、tier 限制仍由 MCP 层逻辑继续执行
 
-### 覆盖范围
+### 平台范围
 
-当前项目聚焦于 macOS 桌面 computer use：
+当前项目明确只支持 `macOS` 桌面 computer use，这一版还不是 Windows 或 Linux backend。
+
+当前覆盖：
 
 - 截图
 - 鼠标控制
@@ -215,4 +228,4 @@ MIT
 
 ## Credits
 
-这个项目保留了从 Claude Code computer-use 工作流中提炼出来的可复用 TypeScript 逻辑，并用一套完全独立、公开可安装的 runtime 替换了缺失的私有执行层。
+这个项目保留了从 Claude Code computer-use 工作流中提炼出来的可复用 TypeScript 逻辑，并用一套完全独立、公开可安装的 macOS runtime 替换了缺失的私有执行层。

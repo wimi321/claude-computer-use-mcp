@@ -1,7 +1,7 @@
 <div align="center">
   <img src="./assets/hero.svg" alt="claude-computer-use-mcp hero" width="100%" />
-  <h1>claude-computer-use-mcp</h1>
-  <p><strong>ローカル Claude インストールに一切依存しない、スタンドアロンの macOS Computer Use MCP サーバーです。</strong></p>
+  <h1>macOS Computer-Use Skill</h1>
+  <p><strong>macOS 向けのトップレベル portable skill。standalone runtime と MCP server を同梱しています。</strong></p>
   <p>
     <a href="https://github.com/wimi321/claude-computer-use-mcp">GitHub</a>
     ·
@@ -10,6 +10,16 @@
     <a href="./README.zh-CN.md">简体中文</a>
   </p>
 </div>
+
+## このプロジェクトの位置づけ
+
+このリポジトリは同時に:
+
+- トップレベルの `skill`
+- 独立した macOS runtime
+- agent エコシステム向けの computer-use MCP server
+
+として設計されています。Codex 専用ではなく、skill という配布形態そのものをポータブルにしています。
 
 ## このプロジェクトの目的
 
@@ -24,10 +34,11 @@
 
 ## できること
 
+- トップレベル macOS computer-use skill
 - スクリーンショット、マウス、キーボード、アプリ起動、ウィンドウ/ディスプレイ情報、クリップボードを扱う standalone MCP server
 - 公開依存のみ: `Node.js + Python + pyautogui + mss + Pillow + pyobjc`
 - 初回起動時に `.runtime/venv` を自動作成し、Python 依存を自動インストール
-- `~/.codex/skills/computer-use-macos/project` に本体まで配置できるトップレベル skill
+- `~/.codex/skills/computer-use-macos/project` に本体まで配置される skill install
 - 抽出した TypeScript computer-use ツール層を維持しつつ、実行バックエンドを完全独立化
 
 ## ローカル検証済み
@@ -106,7 +117,7 @@ Claude Desktop も private native module も不要です。
 
 参考: [`examples/mcp-config.json`](./examples/mcp-config.json)
 
-## トップレベル Skill
+## Skill インストール
 
 同梱 skill: [`skill/computer-use-macos`](./skill/computer-use-macos)
 
@@ -126,7 +137,7 @@ bash skill/computer-use-macos/scripts/install.sh
 ~/.codex/skills/computer-use-macos/project
 ```
 
-つまり元の clone が消えても、skill 側のプロジェクトで動かせます。
+つまり元の clone が消えても、インストール済み skill 側のプロジェクトで動かせます。
 
 ## 実行メモ
 
@@ -147,6 +158,10 @@ macOS では引き続き以下が必要です。
 
 - スクリーンショット自体は compositor レベルでは絞り込まれない
 - その代わり allowlist / tier / action gate は MCP 側で継続して適用される
+
+### 対応プラットフォーム
+
+この実装は現在 `macOS only` です。Windows や Linux 向け backend はまだ含まれていません。
 
 ## 主要コマンド
 
@@ -198,4 +213,4 @@ MIT
 
 ## Credits
 
-Claude Code computer-use ワークフローから再利用可能な TypeScript ロジックを抽出し、そこに完全独立の公開 runtime を接続したプロジェクトです。
+Claude Code computer-use ワークフローから再利用可能な TypeScript ロジックを抽出し、そこに完全独立の公開 macOS runtime を接続したプロジェクトです。

@@ -1,7 +1,7 @@
 <div align="center">
   <img src="./assets/hero.svg" alt="claude-computer-use-mcp hero" width="100%" />
-  <h1>claude-computer-use-mcp</h1>
-  <p><strong>A standalone macOS Computer Use MCP server with zero dependency on a local Claude installation.</strong></p>
+  <h1>macOS Computer-Use Skill</h1>
+  <p><strong>A top-level portable skill for macOS with a bundled standalone runtime and MCP server.</strong></p>
   <p>
     <a href="https://github.com/wimi321/claude-computer-use-mcp">GitHub</a>
     ·
@@ -10,6 +10,16 @@
     <a href="./README.ja.md">日本語</a>
   </p>
 </div>
+
+## Positioning
+
+This repository is best understood as:
+
+- a top-level `skill`
+- a bundled standalone macOS runtime
+- a computer-use MCP server for agent ecosystems
+
+It is not just for Codex. The skill packaging is intentionally portable, so the same project can be adapted for ecosystems that consume skill-style distributions.
 
 ## Why This Project Exists
 
@@ -24,10 +34,11 @@ This repository now delivers exactly that on macOS.
 
 ## What You Get
 
+- top-level macOS computer-use skill
 - standalone MCP server for screenshots, mouse, keyboard, app launch, display switching context, and clipboard
 - public dependency chain only: `Node.js + Python + pyautogui + mss + Pillow + pyobjc`
 - first-run runtime bootstrap: the server creates its own virtualenv and installs dependencies automatically
-- top-level Codex skill that can bundle the project into `~/.codex/skills/computer-use-macos/project`
+- bundled skill install that copies the full project into `~/.codex/skills/computer-use-macos/project`
 - extracted TypeScript tool layer from the original computer-use workflow, re-wired to a fully independent backend
 
 ## Current Status
@@ -108,9 +119,9 @@ Example config:
 
 See [`examples/mcp-config.json`](./examples/mcp-config.json).
 
-## Codex Skill
+## Skill Install
 
-This repo also ships a top-level skill at [`skill/computer-use-macos`](./skill/computer-use-macos).
+This repo ships a top-level skill at [`skill/computer-use-macos`](./skill/computer-use-macos).
 
 Install it with:
 
@@ -130,7 +141,7 @@ After installation, the default project path becomes:
 ~/.codex/skills/computer-use-macos/project
 ```
 
-That means the skill can work even if the original clone disappears.
+That means the installed skill can work even if the original clone disappears.
 
 ## Runtime Notes
 
@@ -152,9 +163,11 @@ That means:
 - screenshots are not compositor-filtered
 - the original allowlist / permission / tier logic still protects actions at the MCP layer
 
-### Scope
+### Platform Scope
 
-This project is intentionally focused on macOS desktop computer use:
+This project is intentionally focused on `macOS` desktop computer use. The current runtime is not a Windows or Linux backend.
+
+Covered capabilities:
 
 - screenshots
 - mouse control
@@ -217,4 +230,4 @@ MIT
 
 ## Credits
 
-This project preserves and adapts the reusable TypeScript computer-use logic recovered from the Claude Code workflow, then replaces the missing private runtime with a fully standalone public implementation.
+This project preserves and adapts reusable TypeScript computer-use logic recovered from the Claude Code workflow, then replaces the missing private runtime with a fully standalone public macOS implementation.
