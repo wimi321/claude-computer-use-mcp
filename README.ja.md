@@ -5,11 +5,23 @@
   <p>
     <a href="https://github.com/wimi321/claude-computer-use-mcp">GitHub</a>
     ·
+    <a href="https://clawhub.ai/wimi321/computer-use-macos">ClawHub</a>
+    ·
     <a href="./README.md">English</a>
     ·
     <a href="./README.zh-CN.md">简体中文</a>
   </p>
 </div>
+
+## ClawHub からインストール
+
+この skill は ClawHub に [`computer-use-macos`](https://clawhub.ai/wimi321/computer-use-macos) として公開済みです。
+
+```bash
+clawhub install computer-use-macos
+```
+
+ソース一式も欲しい場合は、このまま GitHub セットアップを参照してください。
 
 ## このプロジェクトの位置づけ
 
@@ -120,6 +132,16 @@ Claude Desktop も private native module も不要です。
 ## Skill インストール
 
 同梱 skill: [`skill/computer-use-macos`](./skill/computer-use-macos)
+
+ClawHub から直接入れる方法と、このリポジトリから入れる方法の両方があります。
+
+### Option A: ClawHub からインストール
+
+```bash
+clawhub install computer-use-macos
+```
+
+### Option B: リポジトリからインストール
 
 ```bash
 bash skill/computer-use-macos/scripts/install.sh

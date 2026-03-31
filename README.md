@@ -5,11 +5,23 @@
   <p>
     <a href="https://github.com/wimi321/claude-computer-use-mcp">GitHub</a>
     ·
+    <a href="https://clawhub.ai/wimi321/computer-use-macos">ClawHub</a>
+    ·
     <a href="./README.zh-CN.md">简体中文</a>
     ·
     <a href="./README.ja.md">日本語</a>
   </p>
 </div>
+
+## Install From ClawHub
+
+Published on ClawHub as [`computer-use-macos`](https://clawhub.ai/wimi321/computer-use-macos).
+
+```bash
+clawhub install computer-use-macos
+```
+
+If you want the source repo as well, keep reading for the full GitHub setup.
 
 ## Positioning
 
@@ -122,6 +134,16 @@ See [`examples/mcp-config.json`](./examples/mcp-config.json).
 ## Skill Install
 
 This repo ships a top-level skill at [`skill/computer-use-macos`](./skill/computer-use-macos).
+
+You can install it either from ClawHub or from this repository.
+
+### Option A: Install from ClawHub
+
+```bash
+clawhub install computer-use-macos
+```
+
+### Option B: Install from the repo
 
 Install it with:
 

@@ -5,11 +5,23 @@
   <p>
     <a href="https://github.com/wimi321/claude-computer-use-mcp">GitHub</a>
     ·
+    <a href="https://clawhub.ai/wimi321/computer-use-macos">ClawHub</a>
+    ·
     <a href="./README.md">English</a>
     ·
     <a href="./README.ja.md">日本語</a>
   </p>
 </div>
+
+## ClawHub 安装
+
+这个 skill 已发布到 ClawHub，slug 是 [`computer-use-macos`](https://clawhub.ai/wimi321/computer-use-macos)。
+
+```bash
+clawhub install computer-use-macos
+```
+
+如果你还想拿到完整源码仓库，下面继续看 GitHub 方式。
 
 ## 项目定位
 
@@ -122,6 +134,16 @@ node dist/cli.js
 ## Skill 安装
 
 仓库自带顶级 skill：[`skill/computer-use-macos`](./skill/computer-use-macos)
+
+你现在可以通过 ClawHub 直接安装，也可以从这个仓库本地安装。
+
+### 方式 A：从 ClawHub 安装
+
+```bash
+clawhub install computer-use-macos
+```
+
+### 方式 B：从仓库安装
 
 安装：
 
